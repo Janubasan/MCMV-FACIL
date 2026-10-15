@@ -1,0 +1,6 @@
+{
+  "name": "MCMV Sem Dúvidas – Goiânia e Aparecida",
+  "description": "Do aluguel à chave: descubra se você pode ter seu apartamento pelo Minha Casa Minha Vida em Goiânia e Aparecida de Goiânia. Atendimento especializado por Januário Leal e Rosângela de Lima.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
