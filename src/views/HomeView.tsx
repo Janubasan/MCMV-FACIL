@@ -18,6 +18,7 @@ import {
   TrendingDown,
   Building,
   MapPin,
+  Download,
 } from 'lucide-react';
 
 export const HomeView: React.FC = () => {
@@ -168,10 +169,10 @@ export const HomeView: React.FC = () => {
 
                 <button
                   onClick={() => setIsGuideModalOpen(true)}
-                  className="px-5 py-3.5 text-xs sm:text-sm font-bold text-slate-800 bg-slate-100 hover:bg-slate-200 rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer whitespace-nowrap border border-slate-200"
+                  className="px-5 py-3.5 text-xs sm:text-sm font-bold text-slate-950 bg-amber-400 hover:bg-amber-300 active:bg-amber-500 rounded-xl transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer whitespace-nowrap border border-amber-500/40"
                 >
-                  <BookOpen className="w-4 h-4 text-emerald-600" />
-                  <span>Baixar o Guia Completo (Grátis)</span>
+                  <Download className="w-4 h-4 text-slate-950" />
+                  <span>Baixar o Guia Completo em PDF (Grátis)</span>
                 </button>
               </div>
 
@@ -353,13 +354,13 @@ export const HomeView: React.FC = () => {
               <div className="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
                 <button
                   onClick={() => setIsGuideModalOpen(true)}
-                  className="px-6 py-4 text-sm font-bold text-slate-900 bg-white hover:bg-slate-100 rounded-xl transition-all shadow-lg flex items-center justify-center gap-2 cursor-pointer"
+                  className="px-6 py-4 text-sm font-bold text-slate-950 bg-amber-400 hover:bg-amber-300 active:bg-amber-500 rounded-xl transition-all shadow-lg flex items-center justify-center gap-2 cursor-pointer"
                 >
-                  <BookOpen className="w-5 h-5 text-emerald-700" />
-                  <span>Quero Meu Guia Grátis Agora</span>
+                  <Download className="w-5 h-5 text-slate-950" />
+                  <span>Baixar o Guia Completo em PDF (15 Páginas Grátis)</span>
                 </button>
-                <span className="text-xs text-slate-400 text-center sm:text-left">
-                  Disponível para leitura imediata ou impressão em PDF
+                <span className="text-xs text-slate-300 text-center sm:text-left">
+                  Arquivo PDF oficial com checklist imprimível e regras 2026
                 </span>
               </div>
             </div>

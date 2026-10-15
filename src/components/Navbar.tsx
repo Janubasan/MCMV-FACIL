@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useApp, ViewType } from '../context/AppContext';
-import { MessageSquare, Menu, X, Users, BookOpen, CheckSquare, Sparkles } from 'lucide-react';
+import { MessageSquare, Menu, X, Users, BookOpen, CheckSquare, Sparkles, Download } from 'lucide-react';
 
 export const Navbar: React.FC = () => {
   const { currentView, setCurrentView, getWhatsAppUrl, setIsGuideModalOpen, setIsCrmDrawerOpen, leads } = useApp();
@@ -64,29 +64,44 @@ export const Navbar: React.FC = () => {
           </nav>
 
           {/* Zone 3: 1 primary action */}
-          <div className="hidden sm:flex items-center gap-3 shrink-0">
+          <div className="hidden sm:flex items-center gap-2.5 shrink-0">
+            <button
+              onClick={() => setIsGuideModalOpen(true)}
+              className="px-3.5 py-2 text-xs font-bold text-slate-900 bg-amber-400 hover:bg-amber-300 rounded-lg transition-all shadow-xs flex items-center gap-1.5 cursor-pointer whitespace-nowrap"
+            >
+              <Download className="w-3.5 h-3.5 text-slate-950" />
+              <span>Baixar Guia PDF</span>
+            </button>
+
             <button
               onClick={() => setIsCrmDrawerOpen(true)}
-              className="text-xs text-slate-500 hover:text-slate-800 transition-colors py-2 px-3 border border-slate-200 rounded-lg flex items-center gap-1.5 cursor-pointer"
+              className="text-xs text-slate-500 hover:text-slate-800 transition-colors py-2 px-2.5 border border-slate-200 rounded-lg flex items-center gap-1 cursor-pointer"
               title="Painel de Leads & Configuração dos Corretores"
             >
               <Users className="w-3.5 h-3.5 text-slate-400" />
-              <span>Painel ({leads.length})</span>
+              <span>Leads ({leads.length})</span>
             </button>
 
             <a
               href={getWhatsAppUrl('round-robin')}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2.5 text-sm font-semibold text-white bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 rounded-lg transition-colors whitespace-nowrap shrink-0 shadow-sm flex items-center gap-2 cursor-pointer"
+              className="px-3.5 py-2 text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 rounded-lg transition-colors whitespace-nowrap shrink-0 shadow-xs flex items-center gap-1.5 cursor-pointer"
             >
-              <MessageSquare className="w-4 h-4" />
-              <span>Falar no WhatsApp</span>
+              <MessageSquare className="w-3.5 h-3.5" />
+              <span>WhatsApp</span>
             </a>
           </div>
 
           {/* Mobile hamburger button */}
           <div className="flex sm:hidden items-center gap-2">
+            <button
+              onClick={() => setIsGuideModalOpen(true)}
+              className="p-2 text-xs font-bold bg-amber-400 text-slate-950 rounded-lg flex items-center gap-1"
+              title="Baixar Guia"
+            >
+              <Download className="w-3.5 h-3.5" />
+            </button>
             <button
               onClick={() => setIsCrmDrawerOpen(true)}
               className="p-2 text-slate-600 hover:text-slate-900 text-xs border border-slate-200 rounded-lg"
@@ -107,11 +122,22 @@ export const Navbar: React.FC = () => {
         {/* Mobile menu dropdown */}
         {mobileMenuOpen && (
           <div className="lg:hidden border-t border-slate-200 bg-white px-4 pt-3 pb-5 space-y-2 animate-in fade-in duration-150">
+            <button
+              onClick={() => {
+                setIsGuideModalOpen(true);
+                setMobileMenuOpen(false);
+              }}
+              className="w-full text-left px-3.5 py-2.5 text-sm font-bold text-slate-900 bg-amber-400 hover:bg-amber-300 rounded-lg flex items-center gap-2 shadow-xs cursor-pointer mb-2"
+            >
+              <Download className="w-4 h-4" />
+              <span>Baixar o Guia Completo em PDF (15 Páginas)</span>
+            </button>
+
             {navLinks.map((link) => (
               <button
                 key={link.view}
                 onClick={() => handleNavClick(link.view)}
-                className={`block w-full text-left px-3 py-2.5 text-base font-medium rounded-lg ${
+                className={`block w-full text-left px-3 py-2 text-sm font-medium rounded-lg ${
                   currentView === link.view
                     ? 'bg-emerald-50 text-emerald-800 font-semibold'
                     : 'text-slate-700 hover:bg-slate-50'

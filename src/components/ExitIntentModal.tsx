@@ -55,10 +55,10 @@ export const ExitIntentModal: React.FC = () => {
               setIsExitIntentOpen(false);
               setIsGuideModalOpen(true);
             }}
-            className="w-full py-3.5 px-4 text-sm font-bold text-white bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 rounded-xl shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
+            className="w-full py-3.5 px-4 text-sm font-bold text-slate-950 bg-amber-400 hover:bg-amber-300 active:bg-amber-500 rounded-xl shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
           >
-            <Download className="w-4 h-4" />
-            <span>Sim! Quero Meu Guia Grátis</span>
+            <Download className="w-4 h-4 text-slate-950" />
+            <span>Sim! Baixar Guia Oficial em PDF (15 Páginas)</span>
           </button>
 
           <button

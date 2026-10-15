@@ -14,14 +14,14 @@ export const DiagnosticModal: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name || !whatsapp) {
-      alert('Por favor, informe seu nome e WhatsApp.');
+    if (!name.trim() || !whatsapp.trim()) {
+      showToast('Por favor, informe seu nome e WhatsApp.');
       return;
     }
 
     addLead({
-      name,
-      whatsapp,
+      name: name.trim(),
+      whatsapp: whatsapp.trim(),
       email: 'contato.direto@whatsapp.lead',
       city: 'Consulta Direta',
       hasFgts,
@@ -31,11 +31,19 @@ export const DiagnosticModal: React.FC = () => {
     });
 
     setIsDiagnosticModalOpen(false);
-    showToast('Diagnóstico pronto! Abrindo conversa no WhatsApp...');
+    showToast('Diagnóstico pronto! Abrindo WhatsApp dos corretores...');
 
     const msg = `Olá! Estava no site MCMV Sem Dúvidas pesquisando sobre "${diagnosticModalTopic}". Meu nome é ${name}, minha renda familiar é aprox. ${incomeRange} e ${hasFgts === 'sim' ? 'tenho FGTS com saldo' : hasFgts === 'pouco' ? 'tenho pouco FGTS' : 'não possuo FGTS'}. Gostaria de saber como fica meu caso!`;
     const url = getWhatsAppUrl('round-robin', msg);
-    window.open(url, '_blank');
+    
+    // Redireciona de forma segura sem bloqueio de popup
+    const link = document.createElement('a');
+    link.href = url;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (
